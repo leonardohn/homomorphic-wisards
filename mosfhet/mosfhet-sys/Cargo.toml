@@ -1,0 +1,27 @@
+[package]
+name = "mosfhet-sys"
+version = "0.1.0"
+edition = "2021"
+
+[build-dependencies.bindgen]
+version = "0.66.1"
+optional = true
+
+[build-dependencies.cc]
+version = "1.0.79"
+features = ["parallel"]
+
+[dependencies]
+libc = "0.2.147"
+
+[features]
+default = []
+bindgen = ["dep:bindgen"]
+fft_ffnt = []
+fft_ffnt_fma = ["fft_ffnt"]
+fft_spqlios = []
+fft_spqlios_avx512 = ["fft_spqlios"]
+rng_shake = []
+rng_vaes = []
+rng_xoshiro = []
+torus32 = []

@@ -1,0 +1,44 @@
+[workspace]
+default-members = ["mosfhet-sys", "."]
+members = ["mosfhet-sys", "."]
+
+[package]
+name = "mosfhet"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+libc = "0.2.147"
+
+[dependencies.mosfhet-sys]
+path = "./mosfhet-sys"
+
+[dev-dependencies]
+rand = "0.8.5"
+
+[dev-dependencies.criterion]
+version = "0.5.1"
+default-features = false
+features = ["cargo_bench_support", "plotters"]
+
+[[bench]]
+name = "trlwe_trgsw_mul"
+harness = false
+
+[features]
+default = ["fft_ffnt", "rng_shake"]
+bindgen = ["mosfhet-sys/bindgen"] # use bindgen to generate bindings
+fft_ffnt = ["mosfhet-sys/fft_ffnt"] # use ffnt as the FFT library
+fft_ffnt_fma = ["mosfhet-sys/fft_ffnt_fma"] # enable FMA support
+fft_spqlios = ["mosfhet-sys/fft_spqlios"] # use spqlios as the FFT library
+fft_spqlios_avx512 = ["mosfhet-sys/fft_spqlios_avx512"] # enable AVX-512 support
+rng_shake = ["mosfhet-sys/rng_shake"] # use shake as the RNG source
+rng_vaes = ["mosfhet-sys/rng_vaes"] # use VAES as the RNG source
+rng_xoshiro = ["mosfhet-sys/rng_xoshiro"] # use xoshiro as the RNG source
+torus32 = ["mosfhet-sys/torus32"] # use compact 32-bit torus
+
+[profile.dev.package.mosfhet-sys]
+opt-level = 1
+
+[profile.release]
+lto = true

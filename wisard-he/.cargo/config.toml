@@ -1,0 +1,10 @@
+# Enable native architecture optimizations
+# Enable cross-language LTO
+# -- requires Clang and LLD --
+[target.'cfg(profile = "release")']
+rustflags = [
+    "-Ctarget-cpu=native",
+    "-Clinker=clang",
+    "-Clinker-plugin-lto",
+    "-Clink-arg=-fuse-ld=lld",
+]

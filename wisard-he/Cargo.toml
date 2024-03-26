@@ -1,0 +1,47 @@
+[package]
+name = "wisard-he"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+atomic_float = "0.1.0"
+bitvec = "1.0.1"
+csv = "1.2.2"
+rand = "0.8.5"
+rayon = "1.8.0"
+serde = "1.0.188"
+thread_local = "1.1.7"
+wisard = "0.0.3"
+xz2 = "0.1.7"
+
+[dependencies.clap]
+version = "4.4.2"
+features = ["cargo", "derive"]
+
+[dependencies.indicatif]
+version = "0.17.7"
+features = ["rayon"]
+
+[dependencies.mosfhet]
+path = "../mosfhet"
+default-features = false
+features = [
+  "fft_spqlios",
+  "fft_spqlios_avx512",
+  "rng_vaes",
+]
+
+[profile.dev]
+opt-level = 1
+
+[profile.bench]
+inherits = "release"
+debug = true
+
+[profile.release]
+lto = true
+
+[features]
+default = []
+noise-tracking = []
+time-tracking = []
