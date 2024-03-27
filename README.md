@@ -3,9 +3,15 @@
 This repository contains the code to accompany the paper *Homomorphic WiSARDs:
 Efficient Weightless Neural Network training over encrypted data*. The repository
 is organized into three projects:
--  `mosfhet` contains an implementation of TFHE scheme (an extended RUST version of [MOSFHET](https://github.com/antoniocgj/MOSFHET))
-- `wisard-he` the Homomorphic WiSARD implementation, and
-- `wisard-pt` the equivalent cleartext implementation of `wisard-he`.
+-  `mosfhet` contains an implementation of the TFHE scheme (an extended RUST version of [MOSFHET](https://github.com/antoniocgj/MOSFHET))
+- `wisard-he` is the Homomorphic WiSARD implementation, and
+- `wisard-pt` is the equivalent cleartext implementation of `wisard-he`.
+
+### Citation
+
+```
+TBD
+```
 
 ## Requirements
 
@@ -69,3 +75,4 @@ cd wisard-pt
 | --reencrypt | Activates re-encryption after training |
 | --help | Displays a help message |
 
+### License
