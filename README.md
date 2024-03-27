@@ -15,13 +15,12 @@ TBD
 
 ## Requirements
 
-Our codebase have the following dependencies:
+Our codebase has the following dependencies:
 
 - Rust 1.66.1 or later;
 - Clang or GCC C toolchain;
 
-Using compatible Clang and LLD is recommended to make use of the cross-language
-LTO optimization between C and Rust.
+Using compatible Clang and LLD is recommended to make use of the cross-language LTO optimization between C and Rust.
 
 ## Usage
 
@@ -45,6 +44,8 @@ cd wisard-pt
 
 ### Command line arguments
 
+WiSARD options:
+
 | Option | Description|
 |:------:|:-------:|
 | --num-labels  | Number of labels to allocate (if not provided, it infers from the samples) |
@@ -64,15 +65,24 @@ cd wisard-pt
 | --activation | Type of activation – binary/linear/logarithmic/bounded-log (default: binary) |
 | --threshold | Threshold / bleaching value |
 | --seed | Seed for randomness |
-| --sigma | Sigma parameter for TFHE |
-| --l | \ell parameter for TFHE |
-| --bg-bit | Bg_bit parameter for TFHE |
-| --upper-n | N parameter for TFHE |
-| --t | T parameter for TFHE |
-| --base-bit | Base_bit parameter for TFHE |
 | --output | Type of output – accuracy/predictions/scores (default: accuracy) |
-| --threads | Number of threads to use |
-| --reencrypt | Activates re-encryption after training |
 | --help | Displays a help message |
+| --threads | Number of threads to use |
 
-### License
+HE options:
+
+| Option | Description|
+|:------:|:-------:|
+| --sigma | Sigma (noise std. dev.) for RLWE/RGSW encryption |
+| --upper-n | N parameter (dimension) for RLWE/RGSW encryption |
+| --l | ℓ (\ell) parameter for RGSW samples |
+| --bg-bit | log<sub>2</sub>(β) parameter for RGSW samples |
+| --t | T parameter for TFHE keyswitching |
+| --base-bit | Base_bit parameter for TFHE keyswitching |
+| --reencrypt | Activates re-encryption after training |
+
+## License
+
+- `mosfhet`: [Apache License (Version 2.0)](./LICENSE-Apache). See [detailed copyright information](https://github.com/leonardohn/homomorphic-wisards/tree/main/mosfhet/mosfhet-sys/MOSFHET#license).
+- `wisard-he` and `wisard-pt`: [MIT](./LICENSE-MIT) and [Apache License (Version 2.0)](./LICENSE-Apache)
+- Datasets: See each folder.
